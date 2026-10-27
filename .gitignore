@@ -1,0 +1,61 @@
+# Build output
+build/
+build-*/
+out/
+cmake-build-*/
+dist/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_deps/
+
+# Compiled artefacts
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.pdb
+*.exp
+*.ilk
+
+# VST3 bundles when built in-tree
+*.vst3/
+
+# IDE / editor
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln
+*.vcxproj*
+*.xcodeproj/
+*.xcworkspace/
+CMakeUserPresets.json
+.cache/
+compile_commands.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local Claude/agent state
+.claude/
+
+# Not part of the source release
+examples/
+*.wav
+*.flac
+*.mp3
+raport.txt
+claude_start.bat
+claude_resume.bat
