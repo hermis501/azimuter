@@ -100,6 +100,13 @@ patches/          JUCE vendor-string patch and moduleinfo.json repair
 [`CLAUDE.md`](CLAUDE.md) holds the detailed developer notes: design decisions,
 measured thresholds, and the accessibility rules any change has to respect.
 
+## License
+
+Azimuter is free software, released under the
+[GNU General Public License v3.0 or later](LICENSE). It is built with
+[JUCE](https://juce.com), used under JUCE's AGPLv3 licence option. GPLv3 is
+compatible with that licence.
+
 ## Author
 
 Hermis Kasperavičius, 2026. [hermisk.lt](http://hermisk.lt) ·

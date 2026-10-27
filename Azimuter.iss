@@ -96,6 +96,8 @@ Source: "{#VST3SourceDir}\*"; DestDir: "{app}"; \
 ; not inside the .vst3 bundle (which has a strict layout the host parses).
 ; The Start Menu shortcut below points here.
 Source: "readme.txt"; DestDir: "{commonpf}\{#MyAppName}"; Flags: ignoreversion
+; GPLv3 requires the licence text to travel with the binaries.
+Source: "LICENSE"; DestDir: "{commonpf}\{#MyAppName}"; DestName: "LICENSE.txt"; Flags: ignoreversion
 
 [Icons]
 ; Start Menu entries. "Read me" opens the plain-text manual with whatever

@@ -239,13 +239,16 @@ The repo is public at `github.com/hermis501/azimuter`. `.gitignore` keeps out
 `build/`, `dist/`, `examples/` (the tape transfers), all audio files,
 `raport.txt` and the `claude_*.bat` launchers. `README.md` is the GitHub front
 page for developers; `readme.txt` stays the end-user manual that ships.
+Licence: GPL-3.0-or-later (`LICENSE`). It has to stay GPLv3-compatible because
+JUCE is used under its AGPLv3 option; GPLv2-only would not combine with it.
 
 `.github/workflows/build.yml` builds and tests on `windows-latest` and
 `macos-latest` (universal arm64 + x86_64, Xcode generator, deployment target
 10.13). It clones JUCE at `JUCE_TAG` and applies
 `juce_vst3_unicode_vendor.ps1` with an explicit path, then checks
 moduleinfo.json for the vendor string. Pushing a tag `v*` publishes a
-pre-release with the Inno Setup installer, a Windows zip and a macOS zip. The
+full release (marked latest, not pre-release) with the Inno Setup installer,
+a Windows zip and a macOS zip, each carrying `LICENSE`. The
 macOS bundle is only ad-hoc signed, not notarised. Bump `JUCE_TAG` together
 with the local JUCE.
 

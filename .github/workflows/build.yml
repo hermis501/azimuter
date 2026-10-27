@@ -2,7 +2,8 @@ name: Build
 
 # Every push and pull request builds and tests on Windows and macOS.
 # Pushing a tag such as v1.1 also publishes a GitHub release with the
-# Windows installer, a Windows zip and a macOS (universal) zip.
+# Windows installer, a Windows zip and a macOS (universal) zip, as a full
+# (not pre-) release marked latest.
 
 on:
   push:
@@ -79,7 +80,7 @@ jobs:
           $version = (Select-String -Path CMakeLists.txt -Pattern 'project\(Azimuter VERSION ([0-9.]+)').Matches[0].Groups[1].Value
           New-Item -ItemType Directory -Force package | Out-Null
           Copy-Item -Recurse build/Azimuter_artefacts/Release/VST3/Azimuter.vst3 package/
-          Copy-Item readme.txt package/
+          Copy-Item readme.txt, LICENSE package/
           Compress-Archive -Path package/* -DestinationPath "Azimuter-$version-Windows.zip"
           if (-not (Get-Command iscc -ErrorAction SilentlyContinue)) {
             choco install innosetup --no-progress -y
@@ -97,7 +98,7 @@ jobs:
           # Ad-hoc signature so Apple Silicon will load the unsigned bundle.
           codesign --force --deep --sign - package/Azimuter.vst3
           lipo -info package/Azimuter.vst3/Contents/MacOS/Azimuter
-          cp readme.txt package/
+          cp readme.txt LICENSE package/
           (cd package && ditto -c -k --sequesterRsrc . "../Azimuter-$version-macOS.zip")
 
       - uses: actions/upload-artifact@v5
@@ -124,5 +125,5 @@ jobs:
           gh release create "$GITHUB_REF_NAME" artifacts/* \
             --repo "$GITHUB_REPOSITORY" \
             --title "Azimuter ${GITHUB_REF_NAME#v}" \
-            --prerelease \
+            --latest \
             --notes "Windows: run the Setup .exe (or unzip the Windows zip into C:\\Program Files\\Common Files\\VST3). macOS: unzip and copy Azimuter.vst3 to ~/Library/Audio/Plug-Ins/VST3. The macOS build is unsigned; see readme.txt. Full manual: readme.txt."

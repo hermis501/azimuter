@@ -233,6 +233,7 @@ The delay estimate itself is a two-stage lock, which is the classical "set a low
   Developer info
 ---
 The Azimuter VST3 plugin is developed by Hermis Kasperavičius in 2026.
+Azimuter is free software under the GNU General Public License, version 3 or later (see the LICENSE file). Source code: https://github.com/hermis501/azimuter
 If you have feature requests, suggestions or bug reports, you can contact developer.
 E-mail:
 hermis.kasperavicius@gmail.com
